@@ -19,9 +19,7 @@ function readFile(path) {
 (async function createBoard() {
   try {
     const wtClient = await createWTClient(process.env.WT_API_KEY, {
-      logger: {
-        level: 'silly',
-      },
+
     });
 
     const board = await wtClient.board.create({
@@ -75,9 +73,7 @@ function readFile(path) {
 (async function createBoard() {
   try {
     const wtClient = await createWTClient(process.env.WT_API_KEY, {
-      logger: {
-        level: 'silly',
-      },
+
     });
 
     const board = await wtClient.board.create({

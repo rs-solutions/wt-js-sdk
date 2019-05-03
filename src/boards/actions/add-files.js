@@ -1,5 +1,4 @@
 const WTError = require('../../error');
-const logger = require('../../config/logger');
 const futureFile = require('../models/future-file');
 const RemoteFile = require('../models/remote-file');
 const contentForFiles = require('../../utils/content-for-files');
@@ -26,7 +25,6 @@ module.exports = function({ request, routes, uploadFileToBoard }) {
    */
   return async function addFilesToBoard(board, files) {
     try {
-      logger.info(`Adding ${files.length} files to board with ID ${board.id}`);
       const response = await request.send(
         routes.boards.addFiles(board),
         files.map(futureFile)

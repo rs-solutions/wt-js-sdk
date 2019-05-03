@@ -1,4 +1,3 @@
-const logger = require('../config/logger');
 
 module.exports = function({ request, multipartRoute }) {
   /**
@@ -15,9 +14,7 @@ module.exports = function({ request, multipartRoute }) {
     partNumber,
     multipartId
   ) {
-    logger.info(
-      `Requesting S3 upload URL for part #${partNumber} of file ${fileId}`
-    );
+
 
     const transferOrBoard = { id: transferOrBoardId };
     const file = { id: fileId };

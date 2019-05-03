@@ -1,7 +1,6 @@
 const contentForFiles = require('../../utils/content-for-files');
 
 const WTError = require('../../error');
-const logger = require('../../config/logger');
 const { futureTransfer, RemoteTransfer } = require('../models');
 
 module.exports = function({
@@ -51,13 +50,11 @@ module.exports = function({
    */
   return async function createTransfer(transfer) {
     try {
-      logger.info('Creating a new transfer.');
 
       const response = await request.send(
         routes.transfers.create,
         futureTransfer(transfer)
       );
-      logger.info(`Transfer created with id ${response.id}.`);
 
       const remoteTransfer = new RemoteTransfer(response);
 

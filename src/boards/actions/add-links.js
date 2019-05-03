@@ -1,5 +1,4 @@
 const WTError = require('../../error');
-const logger = require('../../config/logger');
 const futureLink = require('../models/future-link');
 const RemoteLink = require('../models/remote-link');
 
@@ -12,7 +11,6 @@ module.exports = function({ request, routes }) {
    */
   return async function addLinksToBoard(board, links) {
     try {
-      logger.info(`Adding ${links.length} links to board with ID ${board.id}`);
       const response = await request.send(
         routes.boards.addLinks(board),
         links.map(futureLink)

@@ -1,5 +1,4 @@
 const WTError = require('../../error');
-const logger = require('../../config/logger');
 const { RemoteTransfer } = require('../models');
 
 module.exports = function({ request, routes }) {

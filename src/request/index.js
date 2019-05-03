@@ -1,8 +1,6 @@
 const axios = require('axios');
 const axiosRetry = require('axios-retry');
 const { get, merge } = require('lodash');
-
-const logger = require('../config/logger');
 const { isNetworkOrIdempotentRequestError } = require('./retry');
 
 axios.defaults.baseURL = 'https://dev.wetransfer.com/';
@@ -21,7 +19,7 @@ function configure(options = {}) {
     retryCondition(error) {
       const retry = isNetworkOrIdempotentRequestError(error.response);
       if (retry) {
-        logger.debug('Retrying previous network request.');
+
       }
 
       return retry;
@@ -55,9 +53,6 @@ function send(options = {}, data = null) {
   const log = {
     method: (options.method || axios.defaults.method).toUpperCase(),
   };
-  logger.debug(
-    `Network request ${log.method} ${options.url} ${JSON.stringify(data)}`
-  );
   return axios(requestOptions).then((response) => response.data);
 }
 
@@ -68,7 +63,6 @@ function upload(uploadUrl, data) {
     data,
   };
 
-  logger.debug(`File upload request PUT ${uploadUrl}`);
   return axios(requestOptions).then((response) => response.data);
 }
 

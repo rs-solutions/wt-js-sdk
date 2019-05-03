@@ -23,9 +23,7 @@ function readFile(path) {
   try {
     // Initialize the client
     const wtClient = await createWTClient(process.env.WT_API_KEY, {
-      logger: {
-        level: 'silly',
-      },
+
     });
 
     const filePaths = [
@@ -71,9 +69,7 @@ function readFile(path) {
 (async function createTransfer() {
   try {
     const wtClient = await createWTClient(process.env.WT_API_KEY, {
-      logger: {
-        level: 'silly',
-      },
+
     });
 
     const transfer = await wtClient.transfer.create({
