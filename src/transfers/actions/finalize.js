@@ -9,7 +9,6 @@ module.exports = function({ request, routes }) {
    */
   return async function finalizeTransfer(transfer) {
     try {
-      logger.info('Finalizing a transfer.');
       const response = await request.send(routes.transfers.finalize(transfer));
       return new RemoteTransfer(response);
     } catch (error) {
